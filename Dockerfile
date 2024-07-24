@@ -22,7 +22,5 @@ COPY package.json yarn.lock ./
 RUN yarn --prod
 COPY --from=builder /app/backend/dist ./dist
 
-EXPOSE 3001
-
 # Excute backend
 CMD [ "node","dist/main" ]
