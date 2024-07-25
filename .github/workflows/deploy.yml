@@ -13,7 +13,7 @@ jobs:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_OC_IP }}
+          host: ${{ env.SSH_OC_IP }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_STORE_KEY }}
           port: ${{ secrets.SSH_PORT }}
