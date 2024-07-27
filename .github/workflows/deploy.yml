@@ -16,7 +16,7 @@ jobs:
     # WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
       - name: prueba
-        run: echo ${{ toJson(github.event) }}
+        run: echo "${{ toJSON(github.event) }}"
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
