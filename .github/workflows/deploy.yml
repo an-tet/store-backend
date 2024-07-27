@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      secrets: ${{ secrets }}
+      data: ${{ secrets }}
       # SSH_OC_IP: ${{ secrets.SSH_OC_IP}}
       # SSH_USER: ${{ secrets.SSH_USER }}
       # SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
@@ -17,7 +17,7 @@ jobs:
       # WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
       - name: prueba
-        run: echo ${{ env.secrets }}
+        run: echo ${{ env.data }}
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
