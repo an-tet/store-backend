@@ -6,24 +6,18 @@ on:
     branches: ['main']
 
 jobs:
-  store-secret:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'see secrets'
-        run: |
-          echo "shh oc ip: ${{ secrets.SSH_OC_IP }}"
-      # - name: 'general secrets'
-      #   run: |
-      #     echo "data: ${{ toJSON(github.event) }}"
-      # - name: executing remote ssh commands using ssh key
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.SSH_OC_IP }}
-      #     username: ${{ secrets.SSH_USER }}
-      #     key: ${{ secrets.SSH_STORE_KEY }}
-      #     port: ${{ secrets.SSH_PORT }}
-      #     script: |
-      #       cd ${{ secrets.WORK_DIR }}
-      #       [ ! -d "${{ secrets.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
-      #       cd store-backend
-      #       git pull
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_OC_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_STORE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ secrets.WORK_DIR }}
+            [ ! -d "${{ secrets.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
+            cd store-backend
+            git pull
