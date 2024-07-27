@@ -17,7 +17,10 @@ jobs:
     steps:
       - name: 'see secrets'
         run: |
-          echo 'shh oc ip: ${{ env.SSH_OC_IP }}'
+          echo "shh oc ip: ${{ env.SSH_OC_IP }}"
+      - name: 'general secrets'
+        run: |
+          echo "data: ${{ toJSON(github.event) }}"
       # example-command "$SUPER_SECRET"
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
