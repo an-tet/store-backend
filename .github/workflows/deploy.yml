@@ -6,17 +6,19 @@ on:
     branches: ['main']
 
 jobs:
-  build:
+  store-secret:
     runs-on: ubuntu-latest
-    # env:
-    # SSH_OC_IP: ${{ secrets.SSH_OC_IP}}
+    env:
+      SSH_OC_IP: ${{ secrets.SSH_OC_IP }}
     # SSH_USER: ${{ secrets.SSH_USER }}
     # SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
     # SSH_PORT: ${{ secrets.SSH_PORT }}
     # WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
-      - name: prueba
-        run: echo "${{ toJSON(github.event) }}"
+      - name: 'see secrets'
+        run: |
+          echo 'shh oc ip: ${{ env.SSH_OC_IP }}'
+      # example-command "$SUPER_SECRET"
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
