@@ -19,11 +19,11 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ env.SSH_OC_IP }}
-          username: ${{ vars.SSH_USER }}
-          key: ${{ vars.SSH_STORE_KEY }}
-          port: ${{ vars.SSH_PORT }}
+          username: ${{ env.SSH_USER }}
+          key: ${{ env.SSH_STORE_KEY }}
+          port: ${{ env.SSH_PORT }}
           script: |
-            cd ${{ vars.WORK_DIR }}
-            [ ! -d "${{ vars.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
+            cd ${{ env.WORK_DIR }}
+            [ ! -d "${{ env.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
             cd store-backend
             git pull
