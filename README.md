@@ -62,7 +62,7 @@ yarn run test
 ```
 
 > [!NOTE]
-> if you want to run in another mode you can see the `package.json` file.
+> if you want to run in another mode you can see the `package.json` file in the root of the project.
 
 ### Postman
 
