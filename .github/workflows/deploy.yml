@@ -8,17 +8,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      SSH_OC_IP: ${{ secrets.SSH_OC_IP }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ env.SSH_OC_IP }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_STORE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ vars.SSH_STORE_KEY }}
+          port: ${{ vars.SSH_PORT }}
           script: |
-            cd ${{ secrets.WORK_DIR }}
-            [ ! -d "${{ secrets.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
+            cd ${{ vars.WORK_DIR }}
+            [ ! -d "${{ vars.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
             cd store-backend
             git pull
