@@ -1,4 +1,4 @@
-name: frontend CI
+name: Backend CI
 on:
   push:
     branches: ['main']
@@ -8,16 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      data: ${{ secrets }}
-      # SSH_OC_IP: ${{ secrets.SSH_OC_IP}}
-      # SSH_USER: ${{ secrets.SSH_USER }}
-      # SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
-      # SSH_PORT: ${{ secrets.SSH_PORT }}
-      # WORK_DIR: ${{ secrets.WORK_DIR }}
+    # env:
+    # SSH_OC_IP: ${{ secrets.SSH_OC_IP}}
+    # SSH_USER: ${{ secrets.SSH_USER }}
+    # SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
+    # SSH_PORT: ${{ secrets.SSH_PORT }}
+    # WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
       - name: prueba
-        run: echo ${{ env.data }}
+        run: echo ${{ github.event }}
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
       #   with:
