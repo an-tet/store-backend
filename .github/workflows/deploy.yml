@@ -9,21 +9,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SSH_OC_IP: ${{ secrets.SSH_OC_IP }}
-      SSH_USER: ${{ secrets.SSH_USER }}
-      SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
-      SSH_PORT: ${{ secrets.SSH_PORT }}
-      WORK_DIR: ${{ secrets.WORK_DIR }}
+      secrets: ${{ secrets }}
+      # SSH_OC_IP: ${{ secrets.SSH_OC_IP}}
+      # SSH_USER: ${{ secrets.SSH_USER }}
+      # SSH_STORE_KEY: ${{ secrets.SSH_STORE_KEY }}
+      # SSH_PORT: ${{ secrets.SSH_PORT }}
+      # WORK_DIR: ${{ secrets.WORK_DIR }}
     steps:
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ env.SSH_OC_IP }}
-          username: ${{ env.SSH_USER }}
-          key: ${{ env.SSH_STORE_KEY }}
-          port: ${{ env.SSH_PORT }}
-          script: |
-            cd ${{ env.WORK_DIR }}
-            [ ! -d "${{ env.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
-            cd store-backend
-            git pull
+      - name: prueba
+        run: echo ${{ env.secrets }}
+      # - name: executing remote ssh commands using ssh key
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ env.SSH_OC_IP }}
+      #     username: ${{ env.SSH_USER }}
+      #     key: ${{ env.SSH_STORE_KEY }}
+      #     port: ${{ env.SSH_PORT }}
+      #     script: |
+      #       cd ${{ env.WORK_DIR }}
+      #       [ ! -d "${{ env.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
+      #       cd store-backend
+      #       git pull
