@@ -23,11 +23,11 @@ jobs:
             sudo git pull
             touch .env
             cat .env
-            sudo echo BACKEND_APP_PORT=${{ secrets.BACKEND_APP_PORT }} > .env
-            sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} > .env
-            sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} > .env
-            sudo echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} > .env
-            sudo echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} > .env
-            sudo echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} > .env
-            sudo echo JWT_SECRET=${{ secrets.JWT_SECRET }} > .env
+            sudo echo BACKEND_APP_PORT=${{ secrets.BACKEND_APP_PORT }} >> .env
+            sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            sudo echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
+            sudo echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} >> .env
+            sudo echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
+            sudo echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
             sudo docker compose up -d
