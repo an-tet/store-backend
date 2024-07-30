@@ -21,8 +21,8 @@ jobs:
             [ ! -d "${{ secrets.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
             cd store-backend
             sudo git pull
+            [ -f ".env" ] && sudo rm .env
             touch .env
-            cat .env
             sudo echo BACKEND_APP_PORT=${{ secrets.BACKEND_APP_PORT }} >> .env
             sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
             sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
@@ -30,4 +30,5 @@ jobs:
             sudo echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} >> .env
             sudo echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
             sudo echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+            cat .env
             sudo docker compose up -d
