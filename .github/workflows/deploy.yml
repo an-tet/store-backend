@@ -17,15 +17,16 @@ jobs:
           key: ${{ secrets.SSH_STORE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            export BACKEND_APP_PORT=${{ secrets.BACKEND_APP_PORT }}
-            export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
-            export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
-            export POSTGRES_DB=${{ secrets.POSTGRES_DB }}
-            export POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
-            export POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
-            export JWT_SECRET=${{ secrets.JWT_SECRET }}
             cd ${{ secrets.WORK_DIR }}
             [ ! -d "${{ secrets.WORK_DIR }}/store-backend" ] && git clone https://github.com/an-tet/store-backend.git
             cd store-backend
             git pull
+            touch .env
+            echo BACKEND_APP_PORT=${{ secrets.BACKEND_APP_PORT }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
+            echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} >> .env
+            echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
+            echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
             docker compose up -d
