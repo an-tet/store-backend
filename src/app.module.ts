@@ -12,7 +12,6 @@ import * as path from 'path';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: path.resolve(__dirname, '../../.env'),
       isGlobal: true,
       load: [envConfig],
     }),
