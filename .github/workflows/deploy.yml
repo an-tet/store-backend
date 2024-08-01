@@ -31,4 +31,8 @@ jobs:
             sudo echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
             sudo echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
             cat .env
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker rm $(sudo docker ps -a -q)
+            sudo docker rmi $(sudo docker images -a -q)
+            sudo docker builder prune -f
             sudo docker compose up -d
