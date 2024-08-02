@@ -20,8 +20,7 @@ async function bootstrap() {
     allowedHeaders: '*',
     origin: [
       'https://antet.dev',
-      'https://www.antet.dev',
-      'http://localhost:3000'
+      'https://www.antet.dev'
     ],
     credentials: true,
   });
