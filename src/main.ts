@@ -18,7 +18,10 @@ async function bootstrap() {
 
   app.enableCors({
     allowedHeaders: '*',
-    origin: ['https://antet.dev', 'http://antet.dev', 'http://localhost:3000'],
+    origin: [
+      'https://antet.dev',
+      'https://www.antet.dev'
+    ],
     credentials: true,
   });
 
